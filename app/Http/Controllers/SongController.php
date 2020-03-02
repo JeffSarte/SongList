@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\song;
-use Illuminate\Http\Request;
+use App\Song;
+use Illuminate\Http\Request;  
 
 class SongController extends Controller
 {
@@ -14,10 +14,9 @@ class SongController extends Controller
      */
     public function index()
     {
-        $song = Song::all();
-        
+        $songs = Song::all();
 
-        return  view('welcome',compact('song'));
+        return  view ('welcome',compact('songs'));
     }
 
     /**
@@ -52,9 +51,12 @@ class SongController extends Controller
      * @param  \App\song  $song
      * @return \Illuminate\Http\Response
      */
-    public function show(song $song)
-    {
-        //
+    public function show($id)
+    {   
+        $song = Song::find($id);
+
+        return view ('edit',compact('song'));
+        
     }
 
     /**
@@ -96,13 +98,5 @@ class SongController extends Controller
         $song->delete();
     }
 
-    public function display(Song $song)
-    {
-
-        $song = Song::all();
-        
-
-        return  view('welcome',compact('song'));
-
-    }
+    
 }

@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::post('song','SongController@store');
-Route::get('song/{$id}','SongController@update');
-Route::delete('song{id}','SongController@destroy');
+Route::delete('song/{id}','SongController@destroy');
+
 
